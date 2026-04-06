@@ -101,8 +101,8 @@ nav.scrolled{height:54px;box-shadow:0 4px 28px rgba(0,0,0,.55);}
 .mob-line-a{font-family:'DM Mono',monospace!important;font-size:.75rem!important;letter-spacing:.18em!important;border:1px solid rgba(201,168,76,.35);color:var(--gold)!important;padding:.6rem 1.8rem;margin-top:.4rem;}
 
 /* ── PAGES / VIEWS ── */
-.view{display:none;min-height:100vh;}
-.view.active{display:block;}
+.view{display:none;position:relative!important;width:100%;min-height:100vh;height:auto!important;overflow:visible;}
+.view.active{display:block!important;}
 
 /* ── SHARED BUTTONS ── */
 .btn-p,.btn-o{
@@ -1262,9 +1262,6 @@ const getVehicle = id => VEHICLES.find(v => v.id === id) || null;
    STEP 2: Paste the /exec URL below
    STEP 3: Remove the /* DISABLED * / wrapper
 ═════════════════════════════════════════════════════════════ */
-/* DISABLED — replace with your GAS Web App URL when ready:
-const GAS_WEBAPP_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
-*/
 const GAS_WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbyD4Xa5CS8qP6083fJrlPM6ymnziyUI0j_2XFxTYgpzH6dDspuHbDE6zZYJ81DE0132/exec';
 
 /* ─── IMAGE DATA ─── */
@@ -1581,6 +1578,11 @@ window.addEventListener('DOMContentLoaded',()=>{
   initLightbox();
   showView('home',true);
 });
+
+/* Safety net */
+if(document.readyState==='complete'||document.readyState==='interactive'){
+  setTimeout(()=>{ if(typeof showView==='function') showView('home',true); },1);
+}
 
 /* ─── CURSOR ─── */
 function initCursor(){

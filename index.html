@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P8EWB8PPKK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-P8EWB8PPKK');
+  function trackCall(){ gtag('event','contact_call',{event_category:'engagement',event_label:'phone'}); }
+  function trackLINE(){ gtag('event','contact_line',{event_category:'engagement',event_label:'line'}); }
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gondal Rent A Car Bike &amp; Scooter — Chiang Mai</title>
@@ -644,6 +654,12 @@ footer{background:#060504;border-top:1px solid var(--bdr);padding:3.2rem 3rem 1.
   font-family:'DM Mono',monospace;font-size:.52rem;letter-spacing:.13em;text-transform:uppercase;
   padding:.26rem .65rem;
 }
+
+/* ── WHY CHOOSE — mobile ── */
+@media(max-width:768px){
+  .why-choose-grid{display:flex!important;flex-direction:column!important;gap:1px;}
+  .why-choose-card{padding:1.8rem 1.5rem!important;}
+}
 </style>
 </head>
 <body>
@@ -770,20 +786,22 @@ footer{background:#060504;border-top:1px solid var(--bdr);padding:3.2rem 3rem 1.
       <span class="s-label" style="justify-content:center;display:flex;">Why Choose Us</span>
       <h2 class="s-title" style="text-align:center;margin-bottom:2.8rem;">Why Choose <em>Gondal</em></h2>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bdr);">
-        <div style="background:#0e0c09;padding:2.4rem 2rem;text-align:center;">
+        <a href="https://line.me/ti/p/QOZRuY-_qw" target="_blank" onclick="trackLINE()" style="display:block;background:#0e0c09;padding:2.4rem 2rem;text-align:center;text-decoration:none;transition:background .2s;cursor:pointer;" onmouseover="this.style.background='#141209'" onmouseout="this.style.background='#0e0c09'">
           <div style="width:52px;height:52px;border:1px solid rgba(201,168,76,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
           </div>
           <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:300;color:var(--offwhite);margin-bottom:.7rem;">Premium Fleet Maintenance</h3>
           <p style="font-size:.7rem;line-height:1.85;color:rgba(245,240,232,.5);">Every vehicle undergoes a rigorous multi-point inspection and full servicing before every rental to ensure peak performance.</p>
-        </div>
-        <div style="background:#0e0c09;padding:2.4rem 2rem;text-align:center;">
+          <p style="font-size:.6rem;color:var(--gold);margin-top:.8rem;letter-spacing:.15em;text-transform:uppercase;">Chat on LINE →</p>
+        </a>
+        <a href="tel:0810342191" onclick="trackCall()" style="display:block;background:#0e0c09;padding:2.4rem 2rem;text-align:center;text-decoration:none;transition:background .2s;cursor:pointer;" onmouseover="this.style.background='#141209'" onmouseout="this.style.background='#0e0c09'">
           <div style="width:52px;height:52px;border:1px solid rgba(201,168,76,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
           </div>
           <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:300;color:var(--offwhite);margin-bottom:.7rem;">Local Navigation Expertise</h3>
           <p style="font-size:.7rem;line-height:1.85;color:rgba(245,240,232,.5);">Our team provides dedicated support via LINE and WhatsApp to assist with your itinerary and vehicle needs.</p>
-        </div>
+          <p style="font-size:.6rem;color:var(--gold);margin-top:.8rem;letter-spacing:.15em;text-transform:uppercase;">Call 081 034 2191 →</p>
+        </a>
         <div style="background:#0e0c09;padding:2.4rem 2rem;text-align:center;">
           <div style="width:52px;height:52px;border:1px solid rgba(201,168,76,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
@@ -1573,7 +1591,6 @@ window.addEventListener('DOMContentLoaded',()=>{
   initRipple();
   initTilt();
   initFilter();
-  initSwipe();
   initNavScroll();
   initLightbox();
   showView('home',true);
@@ -1676,18 +1693,7 @@ function closeLightbox(){
 }
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
 
-/* ─── SWIPE NAV ─── */
-function initSwipe(){
-  let tx=0;
-  document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;},{passive:true});
-  document.addEventListener('touchend',e=>{
-    const dx=e.changedTouches[0].clientX-tx;
-    if(Math.abs(dx)<65)return;
-    const cur=VIEWS.findIndex(v=>document.getElementById('view-'+v).classList.contains('active'));
-    if(dx<0&&cur<VIEWS.length-1)showView(VIEWS[cur+1]);
-    if(dx>0&&cur>0)showView(VIEWS[cur-1]);
-  },{passive:true});
-}
+/* swipe nav removed */
 
 /* ─── NAV SCROLL ─── */
 function initNavScroll(){

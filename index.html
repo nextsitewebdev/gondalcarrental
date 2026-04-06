@@ -676,8 +676,7 @@ footer{background:#060504;border-top:1px solid var(--bdr);padding:3.2rem 3rem 1.
   <a onclick="showView('home');cm()">Home</a>
   <a onclick="showSection('cars');cm()">Cars</a>
   <a onclick="showSection('bikes');cm()">Bikes</a>
-  <a onclick="showView('home');cm();setTimeout(()=>document.getElementById('contact').scrollIntoView({behavior:'smooth'}),250)">Contact</a>
-  <a href="https://line.me/ti/p/QOZRuY-_qw" target="_blank" class="mob-line-a" onclick="cm()">LINE Chat</a>
+  <a onclick="showView('contact');cm()">Contact</a>
 </div>
 
 <!-- NAV -->
@@ -692,13 +691,9 @@ footer{background:#060504;border-top:1px solid var(--bdr);padding:3.2rem 3rem 1.
     <li><a id="n-home"  class="active" onclick="showView('home')">Home</a></li>
     <li><a id="n-cars"  onclick="showSection('cars')" class="nav-section-link">Cars</a></li>
     <li><a id="n-bikes" onclick="showSection('bikes')" class="nav-section-link">Bikes</a></li>
-    <li><a onclick="showView('home');setTimeout(()=>document.getElementById('contact').scrollIntoView({behavior:'smooth'}),200)">Contact</a></li>
+    <li><a id="n-contact" onclick="showView('contact')">Contact</a></li>
   </ul>
   <div class="nav-right">
-    <a href="https://line.me/ti/p/QOZRuY-_qw" target="_blank" class="btn-line-nav">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
-      LINE
-    </a>
     <div class="ham" id="hamBtn" onclick="toggleMob()"><span></span><span></span><span></span></div>
   </div>
 </nav>
@@ -711,10 +706,10 @@ footer{background:#060504;border-top:1px solid var(--bdr);padding:3.2rem 3rem 1.
     <div class="hero-l">
       <span class="hero-tag">Cars · Bikes · Scooters — Chiang Mai</span>
       <h1 class="hero-h1"><em>Cars & Bikes</em><br>for Every<br>Journey</h1>
-      <p class="hero-sub">Brand new fleet. 1st class insurance included. Free delivery to airport or hotel.</p>
+      <p class="hero-sub">Providing a curated selection of premium vehicles for the discerning traveler. Experience Chiang Mai with reliability, style, and transparent service.</p>
       <div class="hero-btns">
-        <a class="btn-p" onclick="showView('fleet')">View Cars</a>
-        <a class="btn-o" onclick="showView('fleet')">Request Availability Check</a>
+        <a class="btn-p" onclick="showView('fleet')">Explore Fleet</a>
+        <a class="btn-o" onclick="showView('contact')">Contact Us Now</a>
       </div>
       <div class="hero-stats">
         <div><div class="sn">10</div><div class="sk">Vehicles</div></div>
@@ -738,11 +733,10 @@ footer{background:#060504;border-top:1px solid var(--bdr);padding:3.2rem 3rem 1.
 
   <!-- WHY -->
   <div style="border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);">
-    <div class="why-grid">
-      <div class="why-item"><div class="why-num">01</div><div class="why-ttl">Affordable Pricing</div><p class="why-txt">Rates from 700 THB/day. First-class insurance always included.</p></div>
-      <div class="why-item"><div class="why-num">02</div><div class="why-ttl">Brand New Fleet</div><p class="why-txt">Every vehicle maintained and inspected before every rental.</p></div>
-      <div class="why-item"><div class="why-num">03</div><div class="why-ttl">Free Delivery</div><p class="why-txt">Complimentary delivery to Chiang Mai Airport or your hotel.</p></div>
-      <div class="why-item"><div class="why-num">04</div><div class="why-ttl">English Support</div><p class="why-txt">English-speaking team via LINE, WhatsApp, or phone.</p></div>
+    <div class="why-grid" style="grid-template-columns:repeat(3,1fr);">
+      <div class="why-item"><div class="why-num" style="color:#c9a84c;font-weight:bold;">01</div><div class="why-ttl">Affordable Pricing</div><p class="why-txt">Affordable pricing, first class insurance always included <em style="color:rgba(201,168,76,.65);font-style:normal;">(Not including motorcycles)</em>.</p></div>
+      <div class="why-item"><div class="why-num" style="color:#c9a84c;font-weight:bold;">02</div><div class="why-ttl">Brand New Fleet</div><p class="why-txt">Every vehicle maintained and inspected before every rental.</p></div>
+      <div class="why-item"><div class="why-num" style="color:#c9a84c;font-weight:bold;">03</div><div class="why-ttl">Free Delivery</div><p class="why-txt">Complimentary delivery to Chiang Mai Airport or your hotel.</p></div>
     </div>
   </div>
 
@@ -752,11 +746,11 @@ footer{background:#060504;border-top:1px solid var(--bdr);padding:3.2rem 3rem 1.
       <div class="about-text">
         <span class="s-label">Our Story</span>
         <h2 class="s-title">Rental Made <em>Effortless</em></h2>
-        <p>Gondal Rent A Car was built around one belief: travelers deserve brand new vehicles, transparent pricing, and a rental process with zero stress. Our English-speaking team handles everything from first inquiry to final return.</p>
-        <p>Whether heading north to Chiang Rai, through the hills to Pai, or exploring the Old City — we have the right car, fully insured, delivered free.</p>
+        <p>Gondal Rent A Car was founded on the principle of seamless travel. We provide well-maintained, modern vehicles paired with a streamlined rental process to ensure your journey through Northern Thailand is effortless from start to finish.</p>
+        
         <div style="margin-top:2rem;display:flex;gap:.9rem;flex-wrap:wrap;">
           <a class="btn-p" onclick="showView('fleet')">Explore Fleet</a>
-          <a class="btn-o" onclick="showView('fleet')">Request Availability Check</a>
+          <a class="btn-o" onclick="showView('contact')">Contact Us Now</a>
         </div>
       </div>
       <div>
@@ -770,20 +764,62 @@ footer{background:#060504;border-top:1px solid var(--bdr);padding:3.2rem 3rem 1.
     </div>
   </section>
 
-  <!-- CONTACT / MAP -->
-  <section class="sec" id="contact" style="padding-bottom:0;">
+  <!-- WHY CHOOSE GONDAL -->
+  <section class="sec" style="background:rgba(201,168,76,.018);border-top:1px solid var(--bdr);">
     <div style="max-width:1200px;margin:0 auto;">
+      <span class="s-label" style="justify-content:center;display:flex;">Why Choose Us</span>
+      <h2 class="s-title" style="text-align:center;margin-bottom:2.8rem;">Why Choose <em>Gondal</em></h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bdr);">
+        <div style="background:#0e0c09;padding:2.4rem 2rem;text-align:center;">
+          <div style="width:52px;height:52px;border:1px solid rgba(201,168,76,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:300;color:var(--offwhite);margin-bottom:.7rem;">Premium Fleet Maintenance</h3>
+          <p style="font-size:.7rem;line-height:1.85;color:rgba(245,240,232,.5);">Every vehicle undergoes a rigorous multi-point inspection and full servicing before every rental to ensure peak performance.</p>
+        </div>
+        <div style="background:#0e0c09;padding:2.4rem 2rem;text-align:center;">
+          <div style="width:52px;height:52px;border:1px solid rgba(201,168,76,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+          </div>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:300;color:var(--offwhite);margin-bottom:.7rem;">Local Navigation Expertise</h3>
+          <p style="font-size:.7rem;line-height:1.85;color:rgba(245,240,232,.5);">Our team provides dedicated support via LINE and WhatsApp to assist with your itinerary and vehicle needs.</p>
+        </div>
+        <div style="background:#0e0c09;padding:2.4rem 2rem;text-align:center;">
+          <div style="width:52px;height:52px;border:1px solid rgba(201,168,76,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+          </div>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:300;color:var(--offwhite);margin-bottom:.7rem;">Transparent Terms</h3>
+          <p style="font-size:.7rem;line-height:1.85;color:rgba(245,240,232,.5);">No hidden costs. The price quoted includes all specified services and insurance for a stress-free experience.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ══════════════════════════════════
+     VIEW: CONTACT & REVIEWS
+══════════════════════════════════════ -->
+<div class="view" id="view-contact">
+  <section class="sec" style="padding-top:8rem;">
+    <div style="max-width:1200px;margin:0 auto 2.5rem;">
       <span class="s-label">Find Us</span>
-      <h2 class="s-title">Contact & <em>Location</em></h2>
+      <h1 class="s-title">Contact &amp; <em>Location</em></h1>
     </div>
     <div style="max-width:1200px;margin:0 auto;" class="ct-grid">
       <div class="ct-info">
+        <!-- CALL NOW -->
+        <div class="ct-item" style="padding:1.4rem 1.6rem;background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.22);margin-bottom:1.8rem;">
+          <p class="ct-lbl" style="font-size:.56rem;letter-spacing:.38em;color:var(--gold);margin-bottom:.5rem;">Call Now</p>
+          <a href="tel:0810342191" style="font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:var(--gold);text-decoration:none;letter-spacing:.08em;display:block;line-height:1;transition:opacity .2s;" onmouseover="this.style.opacity='.75'" onmouseout="this.style.opacity='1'">081 034 2191</a>
+          <p style="font-size:.6rem;color:rgba(245,240,232,.35);letter-spacing:.12em;margin-top:.35rem;">Tap to call · LINE · WhatsApp</p>
+        </div>
         <div class="ct-item"><p class="ct-lbl">Address</p><p class="ct-val">Ratchaphruek Road 8/3<br>Chang Phueak, Chiang Mai 50300</p></div>
         <div class="ct-item"><p class="ct-lbl">LINE</p><p class="ct-val"><a href="https://line.me/ti/p/QOZRuY-_qw" target="_blank">Open LINE Chat →</a></p></div>
         <div class="ct-item"><p class="ct-lbl">WhatsApp</p><p class="ct-val"><a href="https://wa.me/66810342191" target="_blank">+66 81 034 2191 →</a></p></div>
-        <div class="ct-item"><p class="ct-lbl">Contact</p><p class="ct-val">Danyal — English-speaking owner</p></div>
+        <div class="ct-item"><p class="ct-lbl">Owner</p><p class="ct-val">Danyal — English-speaking</p></div>
         <div style="display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.5rem;">
-          <a href="https://wa.me/66810342191" target="_blank" class="btn-p" style="font-size:.62rem;padding:.72rem 1.5rem;">WhatsApp</a>
+          <a href="tel:0810342191" class="btn-p" style="font-size:.62rem;padding:.72rem 1.5rem;">Call Now</a>
           <a href="https://line.me/ti/p/QOZRuY-_qw" target="_blank" class="btn-o" style="font-size:.62rem;padding:.72rem 1.5rem;">LINE Chat</a>
         </div>
       </div>
@@ -794,40 +830,25 @@ footer{background:#060504;border-top:1px solid var(--bdr);padding:3.2rem 3rem 1.
   </section>
 
   <!-- REVIEWS -->
-  <section class="sec" style="padding-top:5rem;">
-    <div style="max-width:1200px;margin:0 auto;margin-bottom:3rem;">
+  <section class="sec" style="padding-top:4rem;">
+    <div style="max-width:1200px;margin:0 auto 3rem;">
       <span class="s-label">Reviews</span>
       <h2 class="s-title">What Travelers <em>Say</em></h2>
       <div style="display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;">
         <span style="font-family:'Bebas Neue',sans-serif;font-size:6rem;color:var(--gold);line-height:1;">4.8</span>
         <div>
-          <div style="display:flex;gap:3px;margin-bottom:.4rem;">
-            <svg style="width:16px;height:16px;fill:var(--gold);" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg style="width:16px;height:16px;fill:var(--gold);" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg style="width:16px;height:16px;fill:var(--gold);" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg style="width:16px;height:16px;fill:var(--gold);" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg style="width:16px;height:16px;fill:var(--gold);" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          </div>
+          <div style="display:flex;gap:3px;margin-bottom:.4rem;"><svg style="width:16px;height:16px;fill:var(--gold);" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg style="width:16px;height:16px;fill:var(--gold);" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg style="width:16px;height:16px;fill:var(--gold);" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg style="width:16px;height:16px;fill:var(--gold);" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg style="width:16px;height:16px;fill:var(--gold);" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
           <p style="font-size:.68rem;letter-spacing:.15em;color:rgba(245,240,232,.4);text-transform:uppercase;">237 Reviews · Google Maps</p>
         </div>
       </div>
     </div>
-    <div class="rev-grid">
+    <div class="rev-grid" style="padding:0 3rem 5rem;">
       <div class="rev-card"><div class="rev-q">"</div><p class="rev-txt">Everything was smooth and efficient from start to finish. Excellent customer care — will definitely recommend and use again!</p><div class="rev-auth"><div class="rev-av">N</div><div><p class="rev-name">Nadav C.</p><p class="rev-date">Sep 2025 · Google</p></div></div></div>
       <div class="rev-card"><div class="rev-q">"</div><p class="rev-txt">Best car rental in Chiang Mai. Kind, English-speaking, excellent brand new cars. Well insured and flexible. Highly recommended!</p><div class="rev-auth"><div class="rev-av">J</div><div><p class="rev-name">Jax T.</p><p class="rev-date">Nov 2025 · Google</p></div></div></div>
       <div class="rev-card"><div class="rev-q">"</div><p class="rev-txt">Rented the Veloz — brand new car, price affordable, delivered free to the airport. Amazing service! See you next year.</p><div class="rev-auth"><div class="rev-av">R</div><div><p class="rev-name">Raffy N.</p><p class="rev-date">Nov 2024 · Google</p></div></div></div>
     </div>
   </section>
 
-  <footer>
-    <div class="ft-top">
-      <div><span class="ft-logo" style="font-size:1.35rem;line-height:1.2;">GONDAL RENT A CAR<br><span style="font-size:.55em;color:var(--gold-l);letter-spacing:.08em;">BIKE &amp; SCOOTER</span></span><p class="ft-tag">Cars · Bikes · Scooters<br>Chiang Mai, Thailand.</p></div>
-      <div class="ft-col"><h4>Navigate</h4><a onclick="showView('home')">Home</a><a onclick="showSection('cars')">Cars</a><a onclick="showSection('bikes')">Bikes</a><a onclick="showView('home');setTimeout(()=>document.getElementById('contact').scrollIntoView({behavior:'smooth'}),200)">Contact</a></div>
-      <div class="ft-col"><h4>Contact</h4><a href="https://wa.me/66810342191" target="_blank">WhatsApp</a><a href="https://line.me/ti/p/QOZRuY-_qw" target="_blank">LINE Chat</a><a>Ratchaphruek Road 8/3</a></div>
-      <div class="ft-col"><h4>Requirements</h4><a>Passport required</a><a>Intl. Driving License</a><a>5,000 THB deposit</a></div>
-    </div>
-    <div class="ft-bot"><span class="ft-copy">© 2025 Gondal Rent A Car. All rights reserved.</span></div>
-  </footer>
 </div>
 
 <!-- ══════════════════════════════════
@@ -989,10 +1010,11 @@ footer{background:#060504;border-top:1px solid var(--bdr);padding:3.2rem 3rem 1.
     </div>
     <div class="fsec-line"></div>
   </div>
-  <p class="bike-note" style="margin:0 auto 1.5rem;max-width:1280px;padding:0 3rem;font-size:.65rem;color:rgba(245,240,232,.35);letter-spacing:.1em;">
+  <p class="bike-note" style="margin:0 auto 0;max-width:1280px;padding:0 3rem;font-size:.65rem;color:rgba(245,240,232,.35);letter-spacing:.1em;">
     International Driving Permit with motorcycle endorsement required · Helmet included
   </p>
   <p style="max-width:1280px;margin:6px auto 1.5rem;padding:0 3rem;color:#E6D491;font-size:0.85rem;letter-spacing:0.5px;">Bikes are provided without insurance. In the event of accidents, theft, or damages, the customer is fully responsible for all associated costs.</p>
+
 
   <div class="car-grid" id="bikesGrid">
 
@@ -1072,14 +1094,6 @@ footer{background:#060504;border-top:1px solid var(--bdr);padding:3.2rem 3rem 1.
 
   </div><!-- /bikesGrid -->
 
-  <footer>
-    <div class="ft-top">
-      <div><span class="ft-logo" style="font-size:1.35rem;line-height:1.2;">GONDAL RENT A CAR<br><span style="font-size:.55em;color:var(--gold-l);letter-spacing:.08em;">BIKE &amp; SCOOTER</span></span><p class="ft-tag">Rent A Car — Chiang Mai, Thailand.</p></div>
-      <div class="ft-col"><h4>Navigate</h4><a onclick="showView('home')">Home</a><a onclick="showSection('cars')">Cars</a><a onclick="showSection('bikes')">Bikes</a></div>
-      <div class="ft-col"><h4>Included</h4><a style="cursor:default;">1st Class Insurance</a><a style="cursor:default;">Free Delivery</a><a style="cursor:default;">5,000 THB Deposit</a></div>
-    </div>
-    <div class="ft-bot"><span class="ft-copy">© 2025 Gondal Rent A Car.</span></div>
-  </footer>
 </div>
 
 <!-- ══════════════════════════════════
@@ -1284,7 +1298,7 @@ const HERO_SLIDES = [
 let SELECTED = { name:'', rate:0, imgKey:'' };
 
 /* ─── VIEW NAVIGATION ─── */
-const VIEWS = ['home','fleet','booking','success'];
+const VIEWS = ['home','fleet','booking','success','contact'];
 function showView(name, skipScroll=false) {
   VIEWS.forEach(v => {
     document.getElementById('view-'+v).classList.toggle('active', v===name);
@@ -1296,14 +1310,14 @@ function showView(name, skipScroll=false) {
   // Breadcrumb
   const bc  = document.getElementById('navBreadcrumb');
   const nls = document.getElementById('navLinks');
-  if(name==='home' || name==='fleet'){
+  if(name==='home' || name==='fleet' || name==='contact'){
     bc.classList.remove('show');
     if(nls) nls.style.display='';
     if(name==='home') { const nh=document.getElementById('n-home'); if(nh) nh.classList.add('active'); }
   } else {
     bc.classList.add('show');
     if(nls) nls.style.display='none';
-    const labels={booking:'Availability Check',success:'Request Sent'};
+    const labels={booking:'Availability Check',success:'Request Sent',contact:'Contact & Reviews'};
     document.getElementById('bcPage').textContent = labels[name]||name;
   }
   if(!skipScroll) window.scrollTo({top:0,behavior:'smooth'});
@@ -1409,7 +1423,7 @@ function startHeroTimer(){hTimer=setInterval(()=>setSlide((hIdx+1)%HERO_SLIDES.l
 
 /* ─── MARQUEE ─── */
 function initMarquee(){
-  const items=['Cars · Bikes · Scooters','Brand New Fleet','1st Class Insurance','Free Airport Delivery','5,000 THB Deposit','Chiang Mai','Chiang Rai','Pai','4.8 Stars','237 Reviews','English Support','Honda ADV 350','Honda PCX 160','Yamaha Filano','Adventure Scooters'];
+  const items=['Cars · Bikes · Scooters','Brand New Fleet','1st Class Insurance','Free Airport Delivery','5,000 THB Deposit','Chiang Mai City','Doi Suthep Adventures','Northern Thailand','4.8 Stars','237 Reviews','English Support','Honda ADV 350','Honda PCX 160','Yamaha Filano','Adventure Scooters'];
   const t=document.getElementById('mqT');
   [...items,...items].forEach(i=>{
     const s=document.createElement('span');s.className='mq-item';
@@ -1680,5 +1694,21 @@ function initNavScroll(){
   });
 }
 </script>
+
+<!-- ══════════════════════════════════
+     PERSISTENT FOOTER — always visible
+══════════════════════════════════════ -->
+<footer>
+  <div class="ft-top">
+    <div>
+      <span class="ft-logo" style="font-size:1.35rem;line-height:1.2;">GONDAL RENT A CAR<br><span style="font-size:.55em;color:var(--gold-l);letter-spacing:.08em;">BIKE &amp; SCOOTER</span></span>
+      <p class="ft-tag">Cars · Bikes · Scooters<br>Chiang Mai, Thailand.</p>
+    </div>
+    <div class="ft-col"><h4>Navigate</h4><a onclick="showView('home')">Home</a><a onclick="showSection('cars')">Cars</a><a onclick="showSection('bikes')">Bikes</a><a onclick="showView('contact')">Contact</a></div>
+    <div class="ft-col"><h4>Contact</h4><a href="https://wa.me/66810342191" target="_blank">WhatsApp</a><a href="https://line.me/ti/p/QOZRuY-_qw" target="_blank">LINE Chat</a><a>Ratchaphruek Road 8/3</a></div>
+
+  </div>
+  <div class="ft-bot"><span class="ft-copy">© 2026 Gondal Rent A Car All Rights Reserved</span></div>
+</footer>
 </body>
 </html>

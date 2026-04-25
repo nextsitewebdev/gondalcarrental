@@ -1201,7 +1201,7 @@ footer{background:#060504;border-top:1px solid var(--bdr);padding:3.2rem 3rem 1.
         </div>
 
         <div class="dep-note">
-          <strong>How it works:</strong> Our online system is being finalized; please contact us via LINE for immediate booking.
+          <strong>How it works:</strong> Submit this form and we'll verify availability. You'll receive an email confirmation — then simply pay in person on pickup day. No online payment required.
         </div>
 
         <button type="submit" class="submit-btn" id="submitBtn">
@@ -1230,10 +1230,10 @@ footer{background:#060504;border-top:1px solid var(--bdr);padding:3.2rem 3rem 1.
         We're checking availability now and will reach you at your <strong style="color:var(--offwhite);">email address</strong> with a confirmation and your deposit payment link.
       </p>
       <div class="success-steps">
-        <div class="step"><div class="step-num">1</div><p class="step-txt"><strong>We check availability</strong> — Our team verifies the vehicle is free for your selected dates.</p></div>
-        <div class="step"><div class="step-num">2</div><p class="step-txt"><strong>We email you</strong> — A confirmation is sent to your email with a secure deposit payment link.</p></div>
-        <div class="step"><div class="step-num">3</div><p class="step-txt"><strong>Pay deposit to confirm</strong> — Your booking is locked once the refundable 5,000 THB deposit is received.</p></div>
-        <div class="step"><div class="step-num">4</div><p class="step-txt"><strong>We deliver your vehicle</strong> — On pickup day we bring it to your airport or hotel — free of charge.</p></div>
+        <div class="step"><div class="step-num">1</div><p class="step-txt"><strong>Availability Check</strong> — Our team verifies the vehicle is free for your selected dates.</p></div>
+        <div class="step"><div class="step-num">2</div><p class="step-txt"><strong>Confirmation Email</strong> — You will receive an email with your official status.</p></div>
+        <div class="step"><div class="step-num">3</div><p class="step-txt"><strong>Pay on Pickup</strong> — No online payment or deposit required today. Pay the full amount in person on pickup day.</p></div>
+        <div class="step"><div class="step-num">4</div><p class="step-txt"><strong>Free Delivery</strong> — We bring the car to your airport or hotel at the scheduled time.</p></div>
       </div>
       <div class="success-btns">
         <a href="https://wa.me/66810342191" target="_blank" class="btn-p">Message Us on WhatsApp</a>
@@ -1369,8 +1369,9 @@ function showSection(section) {
 
 /* ─── SELECT CAR → GO TO BOOKING ─── */
 function selectCar(name, rateStr, cat, imgKey, depositOverride) {
-  const rate = parseInt(rateStr);
-  const dep  = depositOverride ? parseInt(depositOverride) : null;
+  /* Strip commas/currency before parsing so "1,350 THB" → 1350 */
+  const rate = parseInt(String(rateStr).replace(/[^0-9]/g, ''), 10) || 0;
+  const dep  = depositOverride ? parseInt(String(depositOverride).replace(/[^0-9]/g, ''), 10) : null;
   SELECTED = {name, rate, imgKey, type: cat, depositOverride: dep};
   document.getElementById('stripImg').src = IMGS[imgKey];
   document.getElementById('stripImg').alt = name;
@@ -1502,7 +1503,9 @@ function calcSummary(){
   const startTime=document.getElementById('bST').value||'10:00';
   const endDate=document.getElementById('bED').value;
   const endTime=document.getElementById('bET').value||'10:00';
-  const rate=SELECTED.rate;
+
+  /* Guard: strip any stray commas/text in case rate arrived as a string */
+  const rate = parseInt(String(SELECTED.rate || 0).replace(/[^0-9]/g,''), 10) || 0;
 
   if(SELECTED.name){
     document.getElementById('sC').textContent=SELECTED.name;
@@ -1515,7 +1518,7 @@ function calcSummary(){
     const d2=new Date(endDate+'T'+endTime);
     const msPerDay=86400000;
     const rawDays=(d2-d1)/msPerDay;
-    const days=rawDays<=0?0:Math.ceil(rawDays);
+    const days=rawDays<=0 ? 1 : Math.ceil(rawDays);
 
     document.getElementById('sD').textContent=days+(days===1?' day':' days');
     document.getElementById('sPickup').textContent=formatDatetime(startDate,startTime);
@@ -1530,6 +1533,12 @@ function calcSummary(){
         ? SELECTED.depositOverride
         : (isBike ? 3000 : 5000);
       const grand   = rentalTotal + deposit;
+
+      /* ── Store exact numbers globally for form submission ── */
+      SELECTED.grandTotal    = grand;
+      SELECTED.rentalTotal   = rentalTotal;
+      SELECTED.depositAmount = deposit;
+      SELECTED.days          = days;
 
       document.getElementById('sT').textContent    = rentalTotal.toLocaleString() + ' THB';
       document.getElementById('sDep').textContent  = deposit.toLocaleString() + ' THB (paid on pickup, refunded on return)';
@@ -1559,11 +1568,70 @@ function formatDatetime(dateStr,timeStr){
 async function submitBooking(e) {
   e.preventDefault();
 
-  /* Booking system offline — direct customer to LINE */
-  alert('We apologize for the inconvenience. Our online booking system is currently being finalized. To complete your request, please contact the owner directly via LINE. Thank you for your patience.');
+  const btn = document.getElementById('submitBtn');
+  btn.classList.add('loading');
+  btn.disabled = true;
 
-  /* Open LINE chat automatically after alert */
-  window.open('https://line.me/ti/p/QOZRuY-_qw', '_blank');
+  /* ── Use the exact calculated Grand Total (not text-scraped) ── */
+  const totalAmount = SELECTED.grandTotal   ? SELECTED.grandTotal   + ' THB' : '—';
+  const rentalTotal = SELECTED.rentalTotal  ? SELECTED.rentalTotal  + ' THB' : '—';
+  const deposit     = SELECTED.depositAmount? SELECTED.depositAmount + ' THB' : '—';
+
+  /* ── Collect all form fields ── */
+  const rawPickupTime  = document.getElementById('bST').value || '10:00';
+  const rawReturnTime  = document.getElementById('bET').value || '10:00';
+
+  /* Format time strictly as HH:mm — prevents Google Sheets reading as "Dec 30 1899" */
+  const fmtTime = (t) => {
+    if (!t) return '10:00';
+    const parts = t.split(':');
+    const hh = String(parts[0] || '10').padStart(2, '0');
+    const mm = String(parts[1] || '00').padStart(2, '0');
+    return hh + ':' + mm;
+  };
+
+  const payload = {
+    name:           document.getElementById('bN').value.trim(),
+    email:          document.getElementById('bEmail').value.trim(),
+    passport:       document.getElementById('bPP').value.trim(),
+    idp:            document.getElementById('bL').value.trim(),
+    pickup_date:    document.getElementById('bSD').value,
+    pickup_time:    fmtTime(rawPickupTime),
+    return_date:    document.getElementById('bED').value,
+    return_time:    fmtTime(rawReturnTime),
+    location:       document.getElementById('bLoc').value,
+    flight_details: document.getElementById('bLocDetails').value.trim(),
+    notes:          document.getElementById('bNt').value.trim(),
+    vehicle:        SELECTED.name || '—',
+    daily_rate:     SELECTED.rate ? SELECTED.rate + ' THB/day' : '—',
+    rental_total:   rentalTotal,
+    deposit:        deposit,
+    total_amount:   SELECTED.grandTotal
+      ? SELECTED.days + ' days × ' + SELECTED.rate.toLocaleString() + ' THB + ' + SELECTED.depositAmount.toLocaleString() + ' THB deposit = ' + SELECTED.grandTotal.toLocaleString() + ' THB'
+      : '—',
+  };
+
+  try {
+    await fetch(
+      'https://script.google.com/macros/s/AKfycbyDiSFO-vad6EQYCKQ-9yczXu4yKkRz9ADVBeUhyfkxuT6QThLKQMSHsKImmjdbsn_Hsw/exec',
+      {
+        method:  'POST',
+        mode:    'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify(payload),
+      }
+    );
+  } catch (err) {
+    console.warn('Submission note:', err);
+  }
+
+  /* ── No alert — straight to success ── */
+  e.target.reset();
+  const ref = 'GONDAL-' + Date.now().toString(36).toUpperCase();
+  document.getElementById('successRef').textContent = 'Reference: ' + ref;
+  btn.classList.remove('loading');
+  btn.disabled = false;
+  showView('success');
 }
 
 /* ─── DATE MIN ─── */

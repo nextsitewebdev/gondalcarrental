@@ -1142,6 +1142,10 @@ footer{background:#060504;border-top:1px solid var(--bdr);padding:3.2rem 3rem 1.
           <div class="fgrp"><label class="flbl">Email Address</label><input type="email" class="finp" id="bEmail" name="email" placeholder="you@example.com" required></div>
           <div class="fgrp"><label class="flbl">Passport Number</label><input type="text" class="finp" id="bPP" name="passport" placeholder="As shown on passport" required></div>
           <div class="fgrp"><label class="flbl">Intl. Driving License (IDP)</label><input type="text" class="finp" id="bL" name="idp" placeholder="IDP number" required></div>
+          <div class="fgrp"><label class="flbl">Contact Number</label><input type="tel" class="finp" id="bPhone" name="contact_number" placeholder="e.g. +66 81 234 5678" required></div>
+          <div class="fgrp"><label class="flbl">WhatsApp Number <span style="color:var(--gold);font-size:.85em;">(WhatsApp or LINE required)</span></label><input type="tel" class="finp" id="bWA" name="whatsapp_number" placeholder="WhatsApp number"></div>
+          <div class="fgrp"><label class="flbl">LINE ID <span style="color:var(--gold);font-size:.85em;">(WhatsApp or LINE required)</span></label><input type="text" class="finp" id="bLine" name="line_id" placeholder="Your LINE ID"></div>
+          <div id="contactReqMsg" style="display:none;grid-column:1/-1;color:#e8896a;font-size:.8rem;padding:.6rem .9rem;border:1px solid rgba(232,137,106,.4);background:rgba(232,137,106,.08);border-radius:3px;">Please provide at least a WhatsApp number or a LINE ID so we can reach you.</div>
         </div>
 
         <!-- SECTION: Dates & Times -->
@@ -1568,6 +1572,19 @@ function formatDatetime(dateStr,timeStr){
 async function submitBooking(e) {
   e.preventDefault();
 
+  /* ── Require at least one of WhatsApp or LINE ── */
+  const waVal   = document.getElementById('bWA').value.trim();
+  const lineVal = document.getElementById('bLine').value.trim();
+  if (!waVal && !lineVal) {
+    const msg = document.getElementById('contactReqMsg');
+    if (msg) { msg.style.display = 'block'; }
+    document.getElementById('bWA').focus();
+    document.getElementById('bWA').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+  const msgHide = document.getElementById('contactReqMsg');
+  if (msgHide) { msgHide.style.display = 'none'; }
+
   const btn = document.getElementById('submitBtn');
   btn.classList.add('loading');
   btn.disabled = true;
@@ -1595,6 +1612,9 @@ async function submitBooking(e) {
     email:          document.getElementById('bEmail').value.trim(),
     passport:       document.getElementById('bPP').value.trim(),
     idp:            document.getElementById('bL').value.trim(),
+    contact_number: document.getElementById('bPhone').value.trim(),
+    whatsapp_number:document.getElementById('bWA').value.trim(),
+    line_id:        document.getElementById('bLine').value.trim(),
     pickup_date:    document.getElementById('bSD').value,
     pickup_time:    fmtTime(rawPickupTime),
     return_date:    document.getElementById('bED').value,
@@ -1613,7 +1633,7 @@ async function submitBooking(e) {
 
   try {
     await fetch(
-      'https://script.google.com/macros/s/AKfycbwqDldU9lijgR8_nEC6MutlN_WCadnw0O0t0Mc3Vi1m5_ScQaOhUdhaJfpEBHb20xNvIw/exec',
+      'https://script.google.com/macros/s/AKfycbyFI06fPBms0yH_nnw6BuFO1HJCx0iIAEeX6JBQ7eRt2gCKPy_YcVQvGIbZiLrqfEpl/exec',
       {
         method:  'POST',
         mode:    'no-cors',

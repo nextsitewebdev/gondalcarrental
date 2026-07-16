@@ -360,7 +360,7 @@ nav.scrolled{height:54px;box-shadow:0 4px 28px rgba(0,0,0,.55);}
 .spec-val{font-size:.74rem;color:var(--offwhite);letter-spacing:.05em;}
 
 /* Price */
-.car-price-row{display:flex;align-items:baseline;gap:.32rem;margin-bottom:.9rem;}
+.car-price-row{display:none;}
 .price-num{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--gold);line-height:1;}
 .price-unit{font-size:.58rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);}
 
@@ -405,7 +405,7 @@ nav.scrolled{height:54px;box-shadow:0 4px 28px rgba(0,0,0,.55);}
 .selected-strip-img{width:100px;height:60px;object-fit:contain;filter:drop-shadow(0 4px 12px rgba(0,0,0,.5));flex-shrink:0;}
 .selected-strip-info{flex:1;}
 .selected-strip-name{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;color:var(--offwhite);}
-.selected-strip-price{font-size:.64rem;color:rgba(201,168,76,.6);letter-spacing:.12em;margin-top:.15rem;}
+.selected-strip-price{display:none;font-size:.64rem;color:rgba(201,168,76,.6);letter-spacing:.12em;margin-top:.15rem;}
 .change-car-btn{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,240,232,.35);cursor:pointer;padding:.35rem .75rem;border:1px solid rgba(245,240,232,.12);transition:color .2s,border-color .2s;background:none;white-space:nowrap;}
 .change-car-btn:hover{color:var(--gold);border-color:rgba(201,168,76,.3);}
 
@@ -738,7 +738,7 @@ footer{background:#060504;border-top:1px solid var(--bdr);padding:3.2rem 3rem 1.
       <img class="hero-car-img" id="heroImg" alt="">
       <div class="hero-car-label">
         <p id="heroCarLabel"></p>
-        <p id="heroCarPrice"></p>
+        <p id="heroCarPrice" style="display:none;"></p>
       </div>
       <div class="hero-slide-dots" id="heroDots"></div>
     </div>
@@ -772,7 +772,7 @@ footer{background:#060504;border-top:1px solid var(--bdr);padding:3.2rem 3rem 1.
       <div>
         <div class="feat-list">
           <div class="feat-item"><div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div><div><div class="feat-ttl">1st Class Insurance Included</div><p class="feat-txt">Comprehensive coverage — vehicle, driver, passengers & third party. No extras.</p></div></div>
-          <div class="feat-item"><div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><div class="feat-ttl">5,000 THB Deposit (Refundable)</div><p class="feat-txt">Cash deposit required at pickup. Returned in full on vehicle return.</p></div></div>
+          <div class="feat-item"><div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><div class="feat-ttl">Refundable Security Deposit</div><p class="feat-txt">Cash deposit required at pickup. Returned in full on vehicle return.</p></div></div>
           <div class="feat-item"><div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><div><div class="feat-ttl">Free Airport & Hotel Delivery</div><p class="feat-txt">Delivered to Chiang Mai Airport CNX or any hotel in the city. No charge.</p></div></div>
           <div class="feat-item"><div class="feat-icon"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div><div><div class="feat-ttl">Passport + IDP Required</div><p class="feat-txt">Bring your passport and valid International Driving Permit for all rentals.</p></div></div>
         </div>
@@ -881,7 +881,7 @@ footer{background:#060504;border-top:1px solid var(--bdr);padding:3.2rem 3rem 1.
 
   <div class="info-bar">
     <div class="ib-cell"><div class="ib-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><span class="ib-lbl">Insurance</span><p class="ib-val">1st class — all vehicles</p></div></div>
-    <div class="ib-cell"><div class="ib-icon"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div><div><span class="ib-lbl">Deposit</span><p class="ib-val">5,000 THB (refundable)</p></div></div>
+    <div class="ib-cell"><div class="ib-icon"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div><div><span class="ib-lbl">Deposit</span><p class="ib-val">Refundable · advised on enquiry</p></div></div>
     <div class="ib-cell"><div class="ib-icon"><svg viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><div><span class="ib-lbl">Delivery</span><p class="ib-val">Free — airport or hotel</p></div></div>
     <div class="ib-cell"><div class="ib-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div><span class="ib-lbl">Documents</span><p class="ib-val">Passport + Intl. Driving License</p></div></div>
   </div>
@@ -1047,7 +1047,7 @@ footer{background:#060504;border-top:1px solid var(--bdr);padding:3.2rem 3rem 1.
           <div><span class="spec-lbl">Engine</span><span class="spec-val">330cc</span></div>
           <div><span class="spec-lbl">Trans.</span><span class="spec-val">Automatic</span></div>
           <div><span class="spec-lbl">Fuel</span><span class="spec-val">Petrol</span></div>
-          <div><span class="spec-lbl">Deposit</span><span class="spec-val">5,000 THB</span></div>
+          <div><span class="spec-lbl">Deposit</span><span class="spec-val">Refundable</span></div>
         </div>
         <div class="car-price-row"><span class="price-num">799</span><span class="price-unit">THB / Day</span></div>
         <button class="car-cta" type="button" onclick="event.stopPropagation();selectCar('Honda ADV 350','799','bike','adv350','5000')">Request Availability Check</button>
@@ -1065,7 +1065,7 @@ footer{background:#060504;border-top:1px solid var(--bdr);padding:3.2rem 3rem 1.
           <div><span class="spec-lbl">Engine</span><span class="spec-val">160cc</span></div>
           <div><span class="spec-lbl">Trans.</span><span class="spec-val">Automatic</span></div>
           <div><span class="spec-lbl">Fuel</span><span class="spec-val">Petrol</span></div>
-          <div><span class="spec-lbl">Deposit</span><span class="spec-val">3,000 THB</span></div>
+          <div><span class="spec-lbl">Deposit</span><span class="spec-val">Refundable</span></div>
         </div>
         <div class="car-price-row"><span class="price-num">500</span><span class="price-unit">THB / Day</span></div>
         <button class="car-cta" type="button" onclick="event.stopPropagation();selectCar('Honda ADV 160','500','bike','adv160')">Request Availability Check</button>
@@ -1083,7 +1083,7 @@ footer{background:#060504;border-top:1px solid var(--bdr);padding:3.2rem 3rem 1.
           <div><span class="spec-lbl">Engine</span><span class="spec-val">160cc</span></div>
           <div><span class="spec-lbl">Trans.</span><span class="spec-val">Automatic</span></div>
           <div><span class="spec-lbl">Fuel</span><span class="spec-val">Petrol</span></div>
-          <div><span class="spec-lbl">Deposit</span><span class="spec-val">3,000 THB</span></div>
+          <div><span class="spec-lbl">Deposit</span><span class="spec-val">Refundable</span></div>
         </div>
         <div class="car-price-row"><span class="price-num">450</span><span class="price-unit">THB / Day</span></div>
         <button class="car-cta" type="button" onclick="event.stopPropagation();selectCar('Honda PCX 160','450','bike','pcx')">Request Availability Check</button>
@@ -1103,7 +1103,7 @@ footer{background:#060504;border-top:1px solid var(--bdr);padding:3.2rem 3rem 1.
           <div><span class="spec-lbl">Engine</span><span class="spec-val">125cc</span></div>
           <div><span class="spec-lbl">Trans.</span><span class="spec-val">Automatic</span></div>
           <div><span class="spec-lbl">Fuel</span><span class="spec-val">Petrol</span></div>
-          <div><span class="spec-lbl">Deposit</span><span class="spec-val">3,000 THB</span></div>
+          <div><span class="spec-lbl">Deposit</span><span class="spec-val">Refundable</span></div>
         </div>
         <div class="car-price-row"><span class="price-num">300</span><span class="price-unit">THB / Day</span></div>
         <button class="car-cta" type="button" onclick="event.stopPropagation();selectCar('Yamaha Filano','300','bike','filano')">Request Availability Check</button>
@@ -1184,15 +1184,20 @@ footer{background:#060504;border-top:1px solid var(--bdr);padding:3.2rem 3rem 1.
         <!-- AVAILABILITY SUMMARY -->
         <div class="avail-summary" id="availSummary" style="margin-top:2rem;">
           <div class="avail-row"><span class="avail-lbl">Vehicle</span><span class="avail-val" id="sC" style="font-size:.85rem;font-family:'DM Mono',monospace;font-weight:300;">—</span></div>
-          <div class="avail-row"><span class="avail-lbl">Daily Rate</span><span class="avail-val" id="sR">—</span></div>
+          <div class="avail-row" style="display:none;"><span class="avail-lbl">Daily Rate</span><span class="avail-val" id="sR">—</span></div>
           <div class="avail-row"><span class="avail-lbl">Pickup</span><span class="avail-val note" id="sPickup">—</span></div>
           <div class="avail-row"><span class="avail-lbl">Return</span><span class="avail-val note" id="sReturn">—</span></div>
           <div class="avail-row"><span class="avail-lbl">Days</span><span class="avail-val" id="sD">—</span></div>
-          <div class="avail-row"><span class="avail-lbl">Rental Total</span><span class="avail-val big" id="sT">—</span></div>
-          <div class="avail-row"><span class="avail-lbl">Refundable Deposit</span><span class="avail-val" id="sDep">—</span></div>
-          <div class="avail-row" style="border-top:1px solid rgba(201,168,76,.15);margin-top:.3rem;padding-top:.7rem;">
+          <!-- Totals hidden from customer — owner quotes the final price directly -->
+          <div class="avail-row" style="display:none;"><span class="avail-lbl">Rental Total</span><span class="avail-val big" id="sT">—</span></div>
+          <div class="avail-row" style="display:none;"><span class="avail-lbl">Refundable Deposit</span><span class="avail-val" id="sDep">—</span></div>
+          <div class="avail-row" style="display:none;">
             <span class="avail-lbl" style="color:var(--gold-l);">Grand Total (incl. deposit)</span>
             <span class="avail-val big" id="sGrand" style="color:var(--gold-l);">—</span>
+          </div>
+          <div class="avail-row" style="border-top:1px solid rgba(201,168,76,.15);margin-top:.3rem;padding-top:.7rem;">
+            <span class="avail-lbl" style="color:var(--gold-l);">Final Quotation</span>
+            <span class="avail-val" style="color:var(--gold-l);font-size:.7rem;text-align:right;line-height:1.6;">Confirmed by our team</span>
           </div>
           <!-- Bike insurance warning — shown/hidden by calcSummary -->
           <div id="sBikeWarning" style="display:none;margin-top:.8rem;padding:.75rem 1rem;background:rgba(196,86,42,.12);border:1px solid rgba(196,86,42,.35);border-left:3px solid #c4562a;gap:.6rem;align-items:flex-start;">
@@ -1205,7 +1210,7 @@ footer{background:#060504;border-top:1px solid var(--bdr);padding:3.2rem 3rem 1.
         </div>
 
         <div class="dep-note">
-          <strong>How it works:</strong> Submit this form and we'll verify availability. You'll receive an email confirmation — then simply pay in person on pickup day. No online payment required.
+          <strong>How it works:</strong> Submit this form and our team will verify availability and prepare your personalised quotation. We will contact you directly with your final price, including any long-stay discount you may qualify for. No online payment is required — settlement is made in person on pickup day.
         </div>
 
         <button type="submit" class="submit-btn" id="submitBtn">
@@ -1231,12 +1236,12 @@ footer{background:#060504;border-top:1px solid var(--bdr);padding:3.2rem 3rem 1.
       <h1 class="success-title">You're <em>Confirmed!</em></h1>
       <p class="success-body">
         Your booking request has been sent successfully.<br>
-        We're checking availability now and will reach you at your <strong style="color:var(--offwhite);">email address</strong> with a confirmation and your deposit payment link.
+        We're checking availability now and will contact you at your <strong style="color:var(--offwhite);">email address</strong> with a confirmation and your personalised quotation.
       </p>
       <div class="success-steps">
         <div class="step"><div class="step-num">1</div><p class="step-txt"><strong>Availability Check</strong> — Our team verifies the vehicle is free for your selected dates.</p></div>
-        <div class="step"><div class="step-num">2</div><p class="step-txt"><strong>Confirmation Email</strong> — You will receive an email with your official status.</p></div>
-        <div class="step"><div class="step-num">3</div><p class="step-txt"><strong>Pay on Pickup</strong> — No online payment or deposit required today. Pay the full amount in person on pickup day.</p></div>
+        <div class="step"><div class="step-num">2</div><p class="step-txt"><strong>Your Personal Quotation</strong> — Our team contacts you directly with your final price, including any long-stay discount you may qualify for.</p></div>
+        <div class="step"><div class="step-num">3</div><p class="step-txt"><strong>Pay on Pickup</strong> — No online payment or deposit required today. Settlement is made in person on pickup day.</p></div>
         <div class="step"><div class="step-num">4</div><p class="step-txt"><strong>Free Delivery</strong> — We bring the car to your airport or hotel at the scheduled time.</p></div>
       </div>
       <div class="success-btns">
@@ -1443,7 +1448,7 @@ function startHeroTimer(){hTimer=setInterval(()=>setSlide((hIdx+1)%HERO_SLIDES.l
 
 /* ─── MARQUEE ─── */
 function initMarquee(){
-  const items=['Cars · Bikes · Scooters','Brand New Fleet','1st Class Insurance','Free Airport Delivery','5,000 THB Deposit','Chiang Mai City','Doi Suthep Adventures','Northern Thailand','4.8 Stars','237 Reviews','English Support','Honda ADV 350','Honda PCX 160','Yamaha Filano','Adventure Scooters'];
+  const items=['Cars · Bikes · Scooters','Brand New Fleet','1st Class Insurance','Free Airport Delivery','Refundable Deposit','Chiang Mai City','Doi Suthep Adventures','Northern Thailand','4.8 Stars','237 Reviews','English Support','Honda ADV 350','Honda PCX 160','Yamaha Filano','Adventure Scooters'];
   const t=document.getElementById('mqT');
   [...items,...items].forEach(i=>{
     const s=document.createElement('span');s.className='mq-item';
